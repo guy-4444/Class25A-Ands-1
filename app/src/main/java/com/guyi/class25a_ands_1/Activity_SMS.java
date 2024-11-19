@@ -37,23 +37,22 @@ public class Activity_SMS extends AppCompatActivity {
 
     private static final String PERMISSION = Manifest.permission.READ_SMS;
 
-    private ActivityResultLauncher<String> requestPermissionLauncher =
-            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-                Log.d("pttt", "isGranted= " + isGranted);
-                if (isGranted) {
-                    readSms();
-                } else {
-                    boolean shouldShow = ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_SMS);
-                    if (shouldShow) {
-                        openPermissionInfo();
-                        // last time before don't ask me again
-                    } else {
-                        // can't show any request 3+++
-                        openSettingsInfo();
-                    }
-                }
-                updateInfo();
-            });
+    private ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+        Log.d("pttt", "isGranted= " + isGranted);
+        if (isGranted) {
+            readSms();
+        } else {
+            boolean shouldShow = ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_SMS);
+            if (shouldShow) {
+                openPermissionInfo();
+                // last time before don't ask me again
+            } else {
+                // can't show any request 3+++
+                openSettingsInfo();
+            }
+        }
+        updateInfo();
+    });
 
     private ActivityResultLauncher<Intent> manuallyPermissionResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -140,3 +139,32 @@ public class Activity_SMS extends AppCompatActivity {
         manuallyPermissionResultLauncher.launch(intent);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
