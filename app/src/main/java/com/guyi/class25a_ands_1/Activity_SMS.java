@@ -3,9 +3,16 @@ package com.guyi.class25a_ands_1;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -79,6 +86,14 @@ public class Activity_SMS extends AppCompatActivity {
         binding.BTNInfo.setOnClickListener(v -> updateInfo());
         binding.BTNAction1.setOnClickListener(v -> readSms());
         binding.BTNAction1.setText("Read SMS.");
+
+
+        Spannable spannable = new SpannableString("Hello World!");
+        spannable.setSpan(new StyleSpan(Typeface.BOLD), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannable.setSpan(new ForegroundColorSpan(Color.RED), 6, 11, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannable.setSpan(new UnderlineSpan(), 6, 11, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        binding.LBLInfo.setText(spannable);
+
     }
 
     private void readSms() {
